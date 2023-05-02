@@ -1,7 +1,8 @@
 import openai
+import os
 
 def get_response_from_chatgpt(prompt):
-    openai.api_key = "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"
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     
     result = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
