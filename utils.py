@@ -20,6 +20,4 @@ def get_transcript():
     return data
 
 def construct_prompt(transcript):
-    
-
-    return f"Can you summarize the following transcript?\n{transcript}"
+    return "Can you summarize the following transcript?\n{}".format(transcript)

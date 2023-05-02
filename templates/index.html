@@ -1,16 +1,107 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Flask Docker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChatGPT-based Video Summarization</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS -->
+    <style>
+        .contents {
+            margin: 2%;
+            margin-left: 25%;
+            margin-top: 0%;
+        } 
+        
+        .navbar {
+            padding: 2%;
+        }
+        
+        .sidebar {
+            background-color: #212529;
+            height: 100%;
+            width: 10%;
+            position: absolute;
+        }
+        
+        .refresh {
+            margin-bottom: 20px;
+        }
+    </style>
+    
 </head>
+<!-- Chart.js, Bootstrap and jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <body>
-    <h1>ChatGPT-based Video Summarization for SmartMOOCs</h1>
-    <p>Transcript:</p>
-    <p>{{transcript}}</p>
-    <br>
-    <p>Summarization from ChatGPT:</p>
-    <p>{{result}}</p>
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">SmartMOOCs</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link  text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                    My Classes
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>Profile</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">Upload video</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Sidebar -->
+    
+    <div class="contents">
+        <h1>ChatGPT-based Video Summarization for SmartMOOCs</h1>
+        <br</bt>
+        <form>
+            <div class="row">
+                <div class="col">
+                    Transcript:
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" disabled>{{transcript}}</textarea>
+                </div>
+                <div class="col">
+                    Summary from ChatGPT:
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20">{{result}}</textarea>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload another transcript</label>
+            <input class="form-control" type="file" id="formFile">
+        </div>
+        <!-- Footer -->
+        <footer class="py-3 my-4">
+            <p class="text-center text-muted">&copy; 2023 University of Illinois Urbana-Champaign</p>
+        </footer>
+    </div>
+    
+    
 </body>
 </html>
