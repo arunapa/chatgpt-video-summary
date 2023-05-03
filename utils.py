@@ -21,3 +21,9 @@ def get_transcript():
 
 def construct_prompt(transcript):
     return "Can you summarize the following transcript?\n{}".format(transcript)
+
+def one_line_summary(transcript):
+    return "Can you summarize the following in one sentence?\n{}".format(transcript)
+
+def make_shorter(transcript):
+    return "Can you make this shorter?\n{}".format(transcript)

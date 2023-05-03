@@ -78,16 +78,22 @@
     
     <div class="contents">
         <h1>ChatGPT-based Video Summarization for SmartMOOCs</h1>
-        <br</bt>
+        <label for="cars">Select verbosity level:</label>
+        <select name="verbosity" id="verbosity">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <br><br>
         <form>
             <div class="row">
                 <div class="col">
                     Transcript:
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" disabled>{{transcript}}</textarea>
+                    <textarea class="form-control" id="transcript" rows="20" disabled>{{transcript}}</textarea>
                 </div>
                 <div class="col">
                     Summary from ChatGPT:
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20">{{result}}</textarea>
+                    <textarea class="form-control" id="summary" rows="20">{{result}}</textarea>
                 </div>
             </div>
         </form>
@@ -104,7 +110,35 @@
             <p class="text-center text-muted">&copy; 2023 University of Illinois Urbana-Champaign</p>
         </footer>
     </div>
+
+    <br>{{shorter_1}}
+
+    <br>{{shorter_2}}
+
+    <br>
     
+    <script>
+        $(document).ready(function(){
+            $("#verbosity").on('click', function(){
+                value = $('#verbosity').find(":selected").val()
+                
+                switch(value) {
+                    case 'low':
+                        $("textarea#summary").val({{shorter_2}})
+                        break;
+                    case 'medium':
+                        $("textarea#summary").val({{shorter_1}})
+                        break;
+                    case 'high':
+                        $("textarea#summary").val({{result}})
+                        break;
+
+                }
+
+                alert($('#verbosity').find(":selected").val())
+            })
+        });
+    </script>
     
 </body>
 </html>
