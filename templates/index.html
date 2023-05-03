@@ -80,9 +80,9 @@
         <h1>ChatGPT-based Video Summarization for SmartMOOCs</h1>
         <label for="cars">Select verbosity level:</label>
         <select name="verbosity" id="verbosity">
-            <option value="low">Low</option>
+            <option value="high" selected>High</option>
             <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="low">Low</option>
         </select>
         <br><br>
         <form>
@@ -116,21 +116,27 @@
     <br>{{shorter_2}}
 
     <br>
-    
+    {% block javascript %}
     <script>
+        
         $(document).ready(function(){
+
+            low = {{shorter_2 | tojson}}
+            medium = {{shorter_1 | tojson}}
+            high = {{result | tojson}}
+
             $("#verbosity").on('click', function(){
                 value = $('#verbosity').find(":selected").val()
                 
                 switch(value) {
                     case 'low':
-                        $("textarea#summary").val({{shorter_2}})
+                        $("textarea#summary").val(low)
                         break;
                     case 'medium':
-                        $("textarea#summary").val({{shorter_1}})
+                        $("textarea#summary").val(medium)
                         break;
                     case 'high':
-                        $("textarea#summary").val({{result}})
+                        $("textarea#summary").val(high)
                         break;
 
                 }
@@ -139,6 +145,6 @@
             })
         });
     </script>
-    
+    {% endblock %}
 </body>
 </html>
