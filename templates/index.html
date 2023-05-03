@@ -93,9 +93,12 @@
         </form>
         <br>
         <div class="mb-3">
-            <label for="formFile" class="form-label">Upload another transcript</label>
-            <input class="form-control" type="file" id="formFile">
-        </div>
+            <form action = "/upload" method = "POST" enctype = "multipart/form-data">
+                <input class="form-control" type = "file" name = "file" id="formFile" />
+                <br>
+                <input type = "submit"/>
+            </form>
+        </div> 
         <!-- Footer -->
         <footer class="py-3 my-4">
             <p class="text-center text-muted">&copy; 2023 University of Illinois Urbana-Champaign</p>
